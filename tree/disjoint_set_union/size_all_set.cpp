@@ -47,11 +47,16 @@ class DSU {
         }
 
         parent[y] = x;
+        size[x] += size[y];
 
-        if (size[x] == size[y]) {
-            size[x] += size[y];
-        }
         return;
+    }
+
+    /// @brief returns size of given set
+    /// @param x given set (any node in set)
+    /// @return size of set
+    int getSize(int x) {
+        return size[findSet(x)];
     }
 };
 
