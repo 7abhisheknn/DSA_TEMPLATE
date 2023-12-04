@@ -7,20 +7,30 @@ using namespace std;
 // https://www.geeksforgeeks.org/introduction-to-disjoint-set-data-structure-or-union-find-algorithm/
 // https://cp-algorithms.com/data_structures/disjoint_set_union.html
 
-/// @brief Disjoint Set Uninon Data Structure (Union by size, all nodes are by default set)
+/// @brief Disjoint Set Uninon Data Structure (Union by size, no node is by default set)
 class DSU {
     vector<int> parent;
     vector<int> size;
    public:
-    /// @brief DSU Initialization with each node being a set
+    /// @brief DSU Initialization with no node is set
     /// @param n number of nodes
     DSU(int n) {
-        size.resize(n, 1);
-        parent.resize(n);
-        for (int i = 0; i < n; i++) {
-            parent[i] = i;
-        }
+        size.resize(n, 0);
+        parent.resize(n, -1);
     }
+
+	/// @brief makes given node as set
+	/// @param x given node
+	void makeSet(int x) {
+		parent[x] = x;
+        size[x] = 1;
+	}
+
+	/// @brief tells weather given node is set
+	/// @param x given node
+	bool isSet(int x) {
+		return parent[x]!=-1;
+	}
 
     /// @brief finds set which set x belongs (represented in terms of root node)
     /// @param x any node in set
@@ -58,6 +68,13 @@ class DSU {
 /// @brief Driver Code
 int main() {
     DSU ds(7);
+    ds.makeSet(1);
+    ds.makeSet(2);
+    ds.makeSet(3);
+    ds.makeSet(4);
+    ds.makeSet(5);
+    ds.makeSet(6);
+    ds.makeSet(7);
     ds.unionSets(1, 2);
     ds.unionSets(2, 3);
     ds.unionSets(4, 5);

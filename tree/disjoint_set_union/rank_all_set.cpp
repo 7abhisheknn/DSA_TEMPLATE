@@ -59,13 +59,6 @@ class DSU {
 /// @brief Driver Code
 int main() {
     DSU ds(7);
-    ds.makeSet(1);
-    ds.makeSet(2);
-    ds.makeSet(3);
-    ds.makeSet(4);
-    ds.makeSet(5);
-    ds.makeSet(6);
-    ds.makeSet(7);
     ds.unionSets(1, 2);
     ds.unionSets(2, 3);
     ds.unionSets(4, 5);
